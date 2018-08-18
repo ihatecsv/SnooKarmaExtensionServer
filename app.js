@@ -13,6 +13,7 @@ mongoose.connect(config.dbConnectionString, {
 const app = express();
 
 app.get("/get/:redditUsername", (req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
 	User.findOne({
 		redditUsername: req.params.redditUsername
 	}).exec((err, user) => {
@@ -108,7 +109,7 @@ app.get("/redirect", (req, res, next) => {
 						error: "Error updating database!"
 					});
 				}
-				res.json({status: "success"});
+				res.json({status: "Address set successfully!"});
 			});
 		});
 	});
