@@ -1,3 +1,4 @@
+const https = require("https");
 const express = require("express");
 const mongoose = require("mongoose");
 const request = require("request");
@@ -12,17 +13,25 @@ mongoose.connect(config.dbConnectionString, {
 
 const app = express();
 
+https.createServer({
+		key: fs.readFileSync("tls/key.pem"),
+		cert: fs.readFileSync("tls/cert.pem")
+	}, app)
+	.listen(443, function () {
+		console.log("Listening on port 443!");
+	});
+
 app.get("/get/:redditUsername", (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	User.findOne({
 		redditUsername: req.params.redditUsername
 	}).exec((err, user) => {
-		if(err){
+		if (err) {
 			return res.json({
 				error: "Database query failed!"
 			});
 		}
-		if (user === null){
+		if (user === null) {
 			return res.json({
 				error: "Username not found!"
 			});
@@ -104,15 +113,15 @@ app.get("/redirect", (req, res, next) => {
 					setDefaultsOnInsert: true
 				};
 			User.findOneAndUpdate(query, update, options, function (err, result) {
-				if (err){
+				if (err) {
 					return res.json({
 						error: "Error updating database!"
 					});
 				}
-				res.json({status: "Address set successfully!"});
+				res.json({
+					status: "Address set successfully!"
+				});
 			});
 		});
 	});
 });
-
-app.listen(80, () => console.log("SnooKarmaExtensionServer listening!"));
