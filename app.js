@@ -18,8 +18,8 @@ https.createServer({
 		key: fs.readFileSync("tls/key.pem"),
 		cert: fs.readFileSync("tls/cert.pem")
 	}, app)
-	.listen(443, function () {
-		console.log("Listening on port 443!");
+	.listen(40103, function () {
+		console.log("Listening on port 40103!");
 	});
 
 app.get("/get/:redditUsername", (req, res, next) => {
