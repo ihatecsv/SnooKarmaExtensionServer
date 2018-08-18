@@ -1,0 +1,6 @@
+{
+	"dbConnectionString": "mongodb://username:password@localhost/dbname",
+	"redditClientID": "yourredditclientid",
+	"redditSecret": "yourredditsecret",
+	"redirectURI": "http://localhost/redirect"
+}

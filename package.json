@@ -1,0 +1,25 @@
+{
+  "name": "snookarmaextensionserver",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihatecsv/SnooKarmaExtensionServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihatecsv/SnooKarmaExtensionServer/issues"
+  },
+  "homepage": "https://github.com/ihatecsv/SnooKarmaExtensionServer#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.9",
+    "request": "^2.88.0",
+    "uuid": "^3.3.2"
+  }
+}
